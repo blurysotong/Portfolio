@@ -1,8 +1,12 @@
-/* Basic Reset */
+/* Reset and base styles */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
@@ -12,10 +16,51 @@ body {
   color: #333;
 }
 
-/* Section Styling */
+/* Sidebar Navigation */
+.sidebar-nav {
+  position: fixed;
+  top: 50%;
+  left: 20px;
+  transform: translateY(-50%);
+  z-index: 999;
+  background: rgba(255, 255, 255, 0.2);      /* translucent white */
+  backdrop-filter: blur(10px);               /* blur the content behind */
+  -webkit-backdrop-filter: blur(10px);       /* for Safari */
+  padding: 10px;
+  border-radius: 15px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);     /* soft shadow */
+}
+
+
+.sidebar-nav ul {
+  list-style: none;
+}
+
+.sidebar-nav li {
+  margin: 10px 0;
+}
+
+.sidebar-nav a {
+  text-decoration: none;
+  color: #555;
+  background: #fff;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-weight: bold;
+  display: inline-block;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  transition: background 0.3s, color 0.3s;
+}
+
+.sidebar-nav a:hover {
+  background: #333;
+  color: #fff;
+}
+
+/* Sections */
 .section {
   min-height: 100vh;
-  padding: 50px;
+  padding: 50px 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -23,10 +68,63 @@ body {
   opacity: 0;
   transform: translateY(50px);
   transition: opacity 1s ease-out, transform 1s ease-out;
+  text-align: center;
+  position: relative;
+  z-index: 1;
 }
 
-/* When visible */
+/* Parallax backgrounds */
+.parallax {
+  background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80');
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white;
+  text-shadow: 1px 1px 5px rgba(0,0,0,0.7);
+}
+
+/* Section becomes visible */
 .section.visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* Achievements Grid */
+.achievements {
+  background-color: #ffffff;
+  color: #333;
+}
+
+.achievements-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin-top: 30px;
+  width: 100%;
+  max-width: 1000px;
+}
+
+.achievement-card {
+  background: #f9f9f9;
+  border: 2px solid #e0e0e0;
+  border-radius: 15px;
+  padding: 30px 20px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.achievement-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.achievement-card h3 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.achievement-card p {
+  font-size: 16px;
+  color: #666;
 }
