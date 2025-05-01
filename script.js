@@ -19,34 +19,69 @@ sections.forEach(section => {
 
 // Achievement Card Expand / Collapse
 document.querySelectorAll('.achievement-card').forEach(card => {
-  card.addEventListener('click', () => {
-    // Don't re-expand if already expanded
+  card.addEventListener('click', (e) => {
+    // Prevent reopening if already expanded
     if (card.classList.contains('expanded')) return;
 
-    // Add modal class for overlay background
+    // Add overlay class to body
     document.body.classList.add('modal-open');
 
-    // Expand the card
+    // Expand card
     card.classList.add('expanded');
 
-    // Create and append close button
+    // Create close button
     const closeBtn = document.createElement('button');
     closeBtn.classList.add('close-btn');
     closeBtn.innerHTML = '&times;';
     card.appendChild(closeBtn);
 
-    // Handle close on click
-    closeBtn.addEventListener('click', (e) => {
-      e.stopPropagation(); // prevent re-triggering card click
-      card.classList.add('closing');
+    // Close on close button click
+    closeBtn.addEventListener('click', (event) => {
+      event.stopPropagation();
+      closeCard(card, closeBtn);
+    });
+
+    // Close on outside click
+    setTimeout(() => {
+      document.addEventListener('click', outsideClickHandler);
+    }, 0);
+
+    function outsideClickHandler(event) {
+      if (!card.contains(event.target)) {
+        closeCard(card, closeBtn);
+        document.removeEventListener('click', outsideClickHandler);
+      }
+    }
+  });
+
+  function closeCard(card, closeBtn) {
+    card.classList.add('closing');
+    document.body.classList.remove('modal-open');
+    document.body.classList.add('modal-closing');
+
+    setTimeout(() => {
+      card.classList.remove('expanded', 'closing');
+      document.body.classList.remove('modal-closing');
+      if (closeBtn) closeBtn.remove();
+    }, 400);
+  }
+});
+
+// Close card with Escape key
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    const expandedCard = document.querySelector('.achievement-card.expanded');
+    if (expandedCard) {
+      const closeBtn = expandedCard.querySelector('.close-btn');
+      expandedCard.classList.add('closing');
       document.body.classList.remove('modal-open');
       document.body.classList.add('modal-closing');
 
       setTimeout(() => {
-        card.classList.remove('expanded', 'closing');
+        expandedCard.classList.remove('expanded', 'closing');
         document.body.classList.remove('modal-closing');
-        closeBtn.remove();
-      }, 400); // match CSS animation duration
-    });
-  });
+        if (closeBtn) closeBtn.remove();
+      }, 400);
+    }
+  }
 });
