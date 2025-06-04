@@ -91,7 +91,7 @@ body, html {
 }
 
 *, *::before, *::after {
-  color: #FFFFF !important;
+  color: #FFFFFF !important;
 }
 .content-box h1, .content-box h2, .content-box h3 {
   color: white;
