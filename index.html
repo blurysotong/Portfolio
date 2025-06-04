@@ -1,69 +1,108 @@
-<!DOCTYPE html>
+ on <!DOCTYPE html>
 <html lang="en">
+  <!-- Background -->
+<div class="background"></div>
+<!--make the font getter, find a background that is less bright-->
+<!-- Overlay -->
+<div class="overlay"></div>
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>My Portfolio</title>
-  <link rel="stylesheet" href="styles.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cybersecurity Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <!-- Sidebar Navigation -->
-  <nav class="sidebar-nav">
-    <ul>
-      <li><a href="#about">About</a></li>
-      <li><a href="#projects">Projects</a></li>
+  <!-- Background -->
+  <div class="background"></div>
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="logo">My Portfolio</div>
+    <ul class="nav-links">
+      <li><a href="#about" class="active">About</a></li>
       <li><a href="#achievements">Achievements</a></li>
-      <li><a href="#contact">Contact</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#hobbies">Hobbies</a></li>
     </ul>
   </nav>
 
-  <!-- Hero Section -->
-  <header class="section parallax">
-    <h1>Welcome to My Portfolio</h1>
-  </header>
-
-  <!-- About Section -->
-  <section id="about" class="section">
-    <h2>About Me</h2>
-    <p>I am a student who is passionate in it related subjects, especially cybersecurity.</p>
+  <!-- Sections -->
+  <section id="about" class="parallax-section about-section">
+    <div class="content-box">
+      <h1>Hello,<class="typewriter-line">&nbsp;<span id="typewriter"></span></h1>
+      <p>I'm a passionate cybersecurity enthusiast with hands-on experience in ethical hacking, network security, and digital forensics.</p>
+    </div>
   </section>
-
-  <!-- Projects Section -->
-  <section id="projects" class="section parallax">
-    <h2>My Projects</h2>
-    <p>Scroll down to see more!</p>
+  
+  <section id="hobbies" class="parallax-section hobbies-section">
+    <div class="content-box">
+      <h2>Hobbies</h2>
+      <p>In my free time, I enjoy:</p>
+      <ul>
+        <li>Nature Photography with my relatives (Birding)</li>
+        <li>Building or modifying custom mechanical keyboards</li>
+        <li>Occasionally participating in CTFs</li>
+        <li>Listening to Jazz music</li>
+        <li>Reading novels, my favourite being the Miss Peragrine's peculiar children series</li>
+      </ul>
+    </div>
   </section>
-
-  <!-- Achievements Section -->
-  <section id="achievements" class="section achievements">
-    <h2>My Achievements</h2>
-    <div class="achievements-grid">
-      <div class="achievement-card">
-        <h3>Fourth place in YCEP 2025</h3>
-        <img src="Leaderboard_CCTF.png" alt="Leaderboard CCTF" class="achievement-image"/>
+  
+  <section id="languages" class="parallax-section languages-section">
+    <div class="content-box">
+      <h2>Languages</h2>
+      <ul>
+        <li>Python<a href="https://upload.wikimedia.org/wikipedia/commons/d/d3/Python_icon_%28black_and_white%29.svg"></a></li>
+      </ul>
+    </div>
+  </section>
+  <section id="achievements" class="parallax-section achievements-section">
+    <div class="content-box">
+      <h2>Achievements</h2>
+      <ul>
+        <li>4th place in SP YCEP(2025)</li>
+        <li>15th place in CCTF</li>
+        <li>12th in BlahajCTF</li>
+        <li>17th place in SP YCEP(2024)</li>
+      </ul>
+    </div>
+  </section>
+  
+  <section id="hobbies" class="parallax-section hobbies-section">
+    <div class="content-box">
+      <h2>Hobbies</h2>
+      <p>In my free time, I enjoy:</p>
+      <ul>
+        <li>Nature Photography with my relatives (Birding)</li>
+        <li>Building or modifying custom mechanical keyboards</li>
+        <li>Occasionally participating in CTFs</li>
+        <li>Listening to Jazz music</li>
+        <li>Reading novels, my favourite being the Miss Peragrine's peculiar children series</li>
+      </ul>
+    </div>
+  </section>
+  
+  <section id="projects" class="parallax-section projects-section">
+    <div class="content-box">
+      <h2>Projects</h2>
+      <div class="project-card">
+        <h3>This portfolio</h3>
+        <p>Analyzes real-time traffic to detect anomalies using Python and Scapy.</p>
       </div>
-      <div class="achievement-card">
-        <h3>Test 2</h3>
-        <p>Test 2</p>
+      <div class="project-card">
+        <h3>Pwnagotchi</h3>
+        <p>After having to research where to find the different components, due to having a limited budget and some components like the Pisugar 3 not shipping to Singapore because of logistical issues and combing through Singaporean law on  in order to make this legal, having to disable deauth</p>
+        <a href="https://github.com/blurysotong/ES-DE-custom-systems">View Project</a>
       </div>
-      <div class="achievement-card">
-        <h3>Test 3</h3>
-        <p>Test 3</p>
-      </div>
-      <div class="achievement-card">
-        <h3>Test 4</h3>
-        <p>Test 4</p>
+      <div class="project-card">
+        <h3>Web Vulnerability Scanner</h3>
+        <p>Identifies SQL injection and XSS vulnerabilities on target websites.</p>
       </div>
     </div>
   </section>
 
-  <!-- Contact Section -->
-  <section id="contact" class="section">
-    <h2>Contact</h2>
-    <p>Feel free to reach out!</p>
-  </section>
-
+  <!-- Script -->
   <script src="script.js"></script>
 </body>
 </html>

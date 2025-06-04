@@ -1,87 +1,49 @@
-// Section Scroll Reveal Animation
-const sections = document.querySelectorAll('.section');
+// Handle active nav link on scroll
+const sections = document.querySelectorAll('section');
+const navLinks = document.querySelectorAll('.nav-links a');
 
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-    } else {
-      entry.target.classList.remove('visible');
-    }
-  });
-}, {
-  threshold: 0.6
-});
-
-sections.forEach(section => {
-  observer.observe(section);
-});
-
-// Achievement Card Expand / Collapse
-document.querySelectorAll('.achievement-card').forEach(card => {
-  card.addEventListener('click', (e) => {
-    // Prevent reopening if already expanded
-    if (card.classList.contains('expanded')) return;
-
-    // Add overlay class to body
-    document.body.classList.add('modal-open');
-
-    // Expand card
-    card.classList.add('expanded');
-
-    // Create close button
-    const closeBtn = document.createElement('button');
-    closeBtn.classList.add('close-btn');
-    closeBtn.innerHTML = '&times;';
-    card.appendChild(closeBtn);
-
-    // Close on close button click
-    closeBtn.addEventListener('click', (event) => {
-      event.stopPropagation();
-      closeCard(card, closeBtn);
-    });
-
-    // Close on outside click
-    setTimeout(() => {
-      document.addEventListener('click', outsideClickHandler);
-    }, 0);
-
-    function outsideClickHandler(event) {
-      if (!card.contains(event.target)) {
-        closeCard(card, closeBtn);
-        document.removeEventListener('click', outsideClickHandler);
-      }
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop;
+    const sectionHeight = section.clientHeight;
+    if (pageYOffset >= sectionTop - sectionHeight / 2) {
+      current = section.getAttribute('id');
     }
   });
 
-  function closeCard(card, closeBtn) {
-    card.classList.add('closing');
-    document.body.classList.remove('modal-open');
-    document.body.classList.add('modal-closing');
-
-    setTimeout(() => {
-      card.classList.remove('expanded', 'closing');
-      document.body.classList.remove('modal-closing');
-      if (closeBtn) closeBtn.remove();
-    }, 400);
-  }
-});
-
-// Close card with Escape key
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') {
-    const expandedCard = document.querySelector('.achievement-card.expanded');
-    if (expandedCard) {
-      const closeBtn = expandedCard.querySelector('.close-btn');
-      expandedCard.classList.add('closing');
-      document.body.classList.remove('modal-open');
-      document.body.classList.add('modal-closing');
-
-      setTimeout(() => {
-        expandedCard.classList.remove('expanded', 'closing');
-        document.body.classList.remove('modal-closing');
-        if (closeBtn) closeBtn.remove();
-      }, 400);
+  navLinks.forEach(link => {
+    link.classList.remove('active');
+    if (link.getAttribute('href').includes(current)) {
+      link.classList.add('active');
     }
-  }
+  });
 });
+
+const words = ["I am Cheng Hsuan,", "An Enthusiast,", "A Programmer,", "A Gamer"];
+const el = document.getElementById("typewriter");
+let wordIndex = 0;
+let letterIndex = 0;
+let isDeleting = false;
+
+function typeLoop() {
+  const currentWord = words[wordIndex];
+  const visibleText = currentWord.substring(0, letterIndex);
+  el.textContent = visibleText;
+
+  if (!isDeleting && letterIndex < currentWord.length) {
+    letterIndex++;
+    setTimeout(typeLoop, 120);
+  } else if (isDeleting && letterIndex > 0) {
+    letterIndex--;
+    setTimeout(typeLoop, 60);
+  } else {
+    isDeleting = !isDeleting;
+    if (!isDeleting) {
+      wordIndex = (wordIndex + 1) % words.length;
+    }
+    setTimeout(typeLoop, 800);
+  }
+}
+
+window.onload = typeLoop;
