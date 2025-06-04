@@ -121,3 +121,15 @@ body, html {
     transform: translateY(0);
   }
 }
+
+.button {
+  color: black;             /* text color */
+  background-color: #white; /* button background */
+  padding: 2.5px 2.5px;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.button:hover {
+  background-color: #0056b3;
+}
