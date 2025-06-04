@@ -20,7 +20,7 @@ window.addEventListener('scroll', () => {
   });
 });
 
-const words = [" Cheng Hsuan,", " an Enthusiast,", " a Programmer,", " a Gamer"];
+const words = ["Cheng Hsuan,", "an Enthusiast,", "a Programmer,", "a Gamer"];
 const el = document.getElementById("typewriter");
 let wordIndex = 0;
 let letterIndex = 0;
