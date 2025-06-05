@@ -1,4 +1,4 @@
-// Handle active nav link on scroll
+// Active nav link on scroll (unchanged)
 const sections = document.querySelectorAll('section');
 const navLinks = document.querySelectorAll('.nav-links a');
 
@@ -20,7 +20,8 @@ window.addEventListener('scroll', () => {
   });
 });
 
-const words = ["Cheng Hsuan,", "an Enthusiast,", "a Programmer,", "a Gamer"];
+// Typewriter effect (unchanged)
+const words = [" Cheng Hsuan,", " an Enthusiast,", " a Programmer,", " a Gamer"];
 const el = document.getElementById("typewriter");
 let wordIndex = 0;
 let letterIndex = 0;
@@ -47,3 +48,34 @@ function typeLoop() {
 }
 
 window.onload = typeLoop;
+
+// Hamburger menu toggle (unchanged)
+const hamburger = document.querySelector('.hamburger');
+const navLinksContainer = document.querySelector('.nav-links');
+
+hamburger.addEventListener('click', () => {
+  navLinksContainer.classList.toggle('active');
+});
+
+const toggleBtn = document.getElementById('darkModeToggle');
+const backgroundDiv = document.querySelector('.background');
+const favicon = document.getElementById('favicon');
+const navbarIcon = document.getElementById('navbarIcon');  // img inside the button
+
+toggleBtn.addEventListener('click', () => {
+  backgroundDiv.classList.toggle('dark');  // toggle dark class
+
+  if (backgroundDiv.classList.contains('dark')) {
+    // Dark mode enabled
+    favicon.href = 'https://cdn-icons-png.flaticon.com/512/6714/6714978.png';  // dark favicon
+    navbarIcon.src = 'https://cdn-icons-png.flaticon.com/512/6714/6714978.png';  // dark icon for navbar button
+  } else {
+    // Light mode enabled
+    favicon.href = 'https://cdn.iconscout.com/icon/free/png-256/free-modo-escuro-6888661-5645488.png?f=webp'; // light favicon
+    navbarIcon.src = 'https://cdn.iconscout.com/icon/free/png-256/free-modo-escuro-6888661-5645488.png?f=webp';  // light icon for navbar button
+  }
+});
+
+
+  
+  

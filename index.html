@@ -1,32 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
-  <!-- Background -->
-<div class="background"></div>
-<!--make the font getter, find a background that is less bright-->
-<!-- Overlay -->
-
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Cybersecurity Portfolio</title>
-  <link rel="icon" type="image/x-icon" href="https://i.pinimg.com/564x/e6/c2/ed/e6c2edbbb422ba72b53a8a073b233b3e.jpg">
+
+  <!-- Keep ONLY this favicon link -->
+  <link id="favicon" rel="icon" type="image/png" href="https://cdn.iconscout.com/icon/free/png-256/free-modo-escuro-6888661-5645488.png?f=webp" />
+  
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <!-- Background -->
+  <!-- One background div only -->
   <div class="background"></div>
   <div class="overlay"></div>
-  <!-- Navigation -->
+
   <nav class="navbar">
-    <div class="logo">My Portfolio</div>
-    <ul class="nav-links">
-      <li><a href="#about" class="active">About</a></li>
-      <li><a href="#achievements">Achievements</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#hobbies">Hobbies</a></li>
-    </ul>
-  </nav>
+  <div class="logo">My Portfolio</div>
+  <button class="hamburger">&#9776;</button>
+  <button id="darkModeToggle" class="darkmodebutton">
+    <img id="navbarIcon" src="https://cdn.iconscout.com/icon/free/png-256/free-modo-escuro-6888661-5645488.png?f=webp" alt="Icon" width="32" style="vertical-align: middle; margin-right: 8px;" />
+  </button>
+  <ul class="nav-links">
+    <li><a href="#about" class="active">About</a></li>
+    <li><a href="#hobbies">Hobbies</a></li>
+    <li><a href="#achievements">Achievements</a></li>
+    <li><a href="#projects">Projects</a></li>
+  </ul>
+</nav>
 
   <!-- Sections -->
   <section id="about" class="parallax-section about-section">
@@ -79,21 +81,16 @@
       <h2>Projects</h2>
       <div class="project-card">
         <h3>This portfolio</h3>
-        <p>This website is coded in HTML, CSS and JS</p>
+        <p>Analyzes real-time traffic to detect anomalies using Python and Scapy.</p>
       </div>
       <div class="project-card">
         <h3>Pwnagotchi</h3>
         <p>After having to research where to find the different components, due to having a limited budget and some components like the Pisugar 3 not shipping to Singapore because of logistical issues and combing through Singaporean law on  in order to make this legal, having to disable deauth</p>
-        <p>Pwnagotchi website for reference: <a href="https://pwnagotchi.org" class="button">View</a></p>
-      </div>
-      <div class="project-card">
-        <h3>ES-DE custom systems</h3>
-        <p>Unable to find the alternative emulators to emulate the games i need, i had to create this in order to ensure that the emulators i wanted appeared in the selection settings, by creating 2 .xml files in order to guide the app to locate the directories of these emulators, enabling it to detect these emulators.</p>
         <a href="https://github.com/blurysotong/ES-DE-custom-systems" class="button">View Project</a>
       </div>
       <div class="project-card">
-        <h3>Insert Project</h3>
-        <p>Insert Description/Write Up</p>
+        <h3>Web Vulnerability Scanner</h3>
+        <p>Identifies SQL injection and XSS vulnerabilities on target websites.</p>
       </div>
     </div>
   </section>
