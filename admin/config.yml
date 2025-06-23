@@ -1,7 +1,6 @@
 backend:
-  name: github
-  repo: blurysotong/Portfolio
-  branch: main  # or 'master' if you're using that
+  name: git-gateway
+  branch: main
 
 media_folder: "assets/images"
 public_folder: "/assets/images"
@@ -15,4 +14,4 @@ collections:
         name: "home"
         fields:
           - { label: "Title", name: "title", widget: "string" }
-          - { label: "Content", name: "body", widget: "text" }
+          - { label: "Body", name: "body", widget: "text" }
