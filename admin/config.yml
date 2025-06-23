@@ -2,16 +2,60 @@ backend:
   name: git-gateway
   branch: main
 
-media_folder: "assets/images"
-public_folder: "/assets/images"
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+publish_mode: editorial_workflow
 
 collections:
   - name: "pages"
     label: "Pages"
     files:
-      - file: "content/homepage.md"
-        label: "Homepage"
-        name: "homepage"
+      - file: "content/pages/home.md"
+        label: "Home Page"
+        name: "home"
         fields:
           - { label: "Title", name: "title", widget: "string" }
-          - { label: "Body", name: "body", widget: "text" }
+          - { label: "Intro Text", name: "intro", widget: "text" }
+          - { label: "Hero Image", name: "hero_image", widget: "image" }
+          - { label: "Body", name: "body", widget: "markdown" }
+
+      - file: "content/pages/about.md"
+        label: "About Page"
+        name: "about"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Profile Picture", name: "profile_pic", widget: "image" }
+          - { label: "Bio", name: "bio", widget: "markdown" }
+
+  - name: "projects"
+    label: "Projects"
+    folder: "content/projects"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Project Title", name: "title", widget: "string" }
+      - { label: "Project Description", name: "description", widget: "markdown" }
+      - { label: "Project URL", name: "url", widget: "string" }
+      - { label: "Project Image", name: "image", widget: "image" }
+
+  - name: "site_code"
+    label: "Site Code"
+    files:
+      - file: "static/style.css"
+        label: "CSS Stylesheet"
+        name: "css"
+        fields:
+          - { label: "CSS", name: "raw_css", widget: "code", mode: "css" }
+
+      - file: "index.html"
+        label: "Homepage HTML"
+        name: "homepage_html"
+        fields:
+          - { label: "HTML", name: "raw_html", widget: "code", mode: "html" }
+
+      - file: "script.js"
+        label: "JavaScript"
+        name: "js"
+        fields:
+          - { label: "JS", name: "raw_js", widget: "code", mode: "javascript" }
