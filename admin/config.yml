@@ -1,0 +1,13 @@
+media_folder: "assets/images"         # path in your repo
+public_folder: "/assets/images"       # URL path from your site root
+
+collections:
+  - name: "pages"
+    label: "Pages"
+    files:
+      - file: "index.html"
+        label: "Home Page"
+        name: "home"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Body", name: "body", widget: "text" }
