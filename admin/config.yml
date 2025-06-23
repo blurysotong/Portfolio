@@ -1,5 +1,10 @@
-media_folder: "assets/images"         # path in your repo
-public_folder: "/assets/images"       # URL path from your site root
+backend:
+  name: github
+  repo: blurysotong/Portfolio
+  branch: main  # or 'master' if you're using that
+
+media_folder: "assets/images"
+public_folder: "/assets/images"
 
 collections:
   - name: "pages"
@@ -10,4 +15,4 @@ collections:
         name: "home"
         fields:
           - { label: "Title", name: "title", widget: "string" }
-          - { label: "Body", name: "body", widget: "text" }
+          - { label: "Content", name: "body", widget: "text" }
