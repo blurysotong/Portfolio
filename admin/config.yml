@@ -9,9 +9,9 @@ collections:
   - name: "pages"
     label: "Pages"
     files:
-      - file: "index.html"
-        label: "Home Page"
-        name: "home"
+      - file: "content/homepage.md"
+        label: "Homepage"
+        name: "homepage"
         fields:
           - { label: "Title", name: "title", widget: "string" }
           - { label: "Body", name: "body", widget: "text" }
