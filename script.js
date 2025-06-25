@@ -76,6 +76,47 @@ toggleBtn.addEventListener('click', () => {
   }
 });
 
-
+  document.addEventListener("DOMContentLoaded", () => {
+  const navbar = document.querySelector('.navbar');
   
+  // Create progress bar element if it doesn't exist
+  let progressBar = document.getElementById('progress-bar');
+  if (!progressBar) {
+    progressBar = document.createElement('div');
+    progressBar.id = 'progress-bar';
+    document.body.prepend(progressBar);
+  }
+
+  // Apply necessary styles (can also stay in CSS, but here if you want JS only)
+  Object.assign(progressBar.style, {
+    position: 'fixed',
+    top: '0',
+    left: '0',
+    height: '4px',
+    background: '#00ffff',
+    width: '0%',
+    zIndex: '999',
+    transition: 'width 0.25s ease-out'
+  });
+
+  function onScroll() {
+    const scrollY = window.scrollY;
+
+    // Expand/shrink navbar
+    if (scrollY === 0) {
+      navbar.classList.remove('expanded');
+    } else {
+      navbar.classList.add('expanded');
+    }
+
+    // Update scroll progress bar
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const scrollPercent = docHeight > 0 ? (scrollY / docHeight) * 100 : 0;
+    progressBar.style.width = scrollPercent + "%";
+  }
+
+  window.addEventListener('scroll', onScroll);
+  onScroll(); // Run on page load
+});
+
   
