@@ -67,11 +67,9 @@ toggleBtn.addEventListener('click', () => {
 
   if (backgroundDiv.classList.contains('dark')) {
     // Dark mode enabled
-    favicon.href = 'https://cdn-icons-png.flaticon.com/512/6714/6714978.png';  // dark favicon
     navbarIcon.src = 'https://cdn-icons-png.flaticon.com/512/6714/6714978.png';  // dark icon for navbar button
   } else {
     // Light mode enabled
-    favicon.href = 'https://cdn.iconscout.com/icon/free/png-256/free-modo-escuro-6888661-5645488.png?f=webp'; // light favicon
     navbarIcon.src = 'https://cdn.iconscout.com/icon/free/png-256/free-modo-escuro-6888661-5645488.png?f=webp';  // light icon for navbar button
   }
 });
@@ -119,4 +117,28 @@ toggleBtn.addEventListener('click', () => {
   onScroll(); // Run on page load
 });
 
-  
+
+// Modal logic
+const modal = document.getElementById("cert-modal");
+const modalImg = document.getElementById("modal-img");
+const captionText = document.getElementById("modal-caption");
+const closeBtn = document.querySelector(".modal-close");
+
+document.querySelectorAll(".certificate-slide img").forEach(img => {
+  img.addEventListener("click", () => {
+    modal.style.display = "block";
+    modalImg.src = img.src;
+    captionText.textContent = img.alt || img.parentElement.querySelector("p")?.textContent || "";
+  });
+});
+
+closeBtn.onclick = () => {
+  modal.style.display = "none";
+};
+
+window.onclick = (e) => {
+  if (e.target === modal) {
+    modal.style.display = "none";
+  }
+};
+
