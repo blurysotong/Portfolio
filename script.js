@@ -118,27 +118,31 @@ toggleBtn.addEventListener('click', () => {
 });
 
 
-// Modal logic
-const modal = document.getElementById("cert-modal");
-const modalImg = document.getElementById("modal-img");
-const captionText = document.getElementById("modal-caption");
-const closeBtn = document.querySelector(".modal-close");
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.carousel-container').forEach(container => {
+    const track = container.querySelector('.carousel-track');
+    const btnLeft = container.querySelector('.carousel-btn.left');
+    const btnRight = container.querySelector('.carousel-btn.right');
 
-document.querySelectorAll(".certificate-slide img").forEach(img => {
-  img.addEventListener("click", () => {
-    modal.style.display = "block";
-    modalImg.src = img.src;
-    captionText.textContent = img.alt || img.parentElement.querySelector("p")?.textContent || "";
+    btnLeft.addEventListener('click', () => {
+      const slideWidth = getSlideWidth(track);
+      track.scrollBy({ left: -slideWidth, behavior: 'smooth' });
+    });
+
+    btnRight.addEventListener('click', () => {
+      const slideWidth = getSlideWidth(track);
+      track.scrollBy({ left: slideWidth, behavior: 'smooth' });
+    });
+
+    // Utility function to get full width of one slide including margin
+    function getSlideWidth(trackElement) {
+      const slide = trackElement.querySelector('.certificate-slide');
+      if (!slide) return 250; // fallback width
+
+      const style = window.getComputedStyle(slide);
+      const marginRight = parseFloat(style.marginRight) || 0;
+      return slide.offsetWidth + marginRight;
+    }
   });
 });
-
-closeBtn.onclick = () => {
-  modal.style.display = "none";
-};
-
-window.onclick = (e) => {
-  if (e.target === modal) {
-    modal.style.display = "none";
-  }
-};
 

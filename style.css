@@ -231,6 +231,12 @@ body, html {
   overflow-x: auto;
   scroll-behavior: smooth;
   padding: 1rem;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  scroll-snap-type: x mandatory;
+}
+.carousel-track::-webkit-scrollbar {
+  display: none;
 }
 
 .certificate-slide {
@@ -243,6 +249,9 @@ body, html {
   padding: 1rem;
   cursor: pointer;
   transition: transform 0.3s;
+  scroll-snap-align: start;
+  width: 250px; /* or your fixed value */
+  flex: 0 0 auto;
 }
 
 .certificate-slide:hover {
