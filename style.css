@@ -241,7 +241,7 @@ body, html {
 
 .certificate-slide {
   flex: 0 0 auto;
-  width: 250px;
+  width: min(80vw, 250px);
   background: rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(6px);
   border-radius: 12px;
@@ -272,17 +272,21 @@ body, html {
 
 .carousel-btn {
   position: absolute;
-  top: 45%;
+  top: 50%;
   transform: translateY(-50%);
-  font-size: 2rem;
+  font-size: 1.5rem; /* Slightly smaller for better fit */
   color: white;
-  background: rgba(0,0,0,0.4);
+  background: rgba(0, 0, 0, 0.5);
   border: none;
   border-radius: 50%;
-  width: 40px;
-  height: 40px;
+  width: 48px;
+  height: 48px;
   cursor: pointer;
   z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
 }
 
 .carousel-btn.left {
@@ -327,3 +331,20 @@ body, html {
   color: #ddd;
   margin-top: 1rem;
 }
+
+@media (max-width: 600px) {
+  .certificates-carousel-section h2 {
+    font-size: 1.5rem;
+  }
+
+  .certificate-slide p {
+    font-size: 0.8rem;
+  }
+
+  .carousel-btn {
+    width: 36px;
+    height: 36px;
+    font-size: 1.2rem;
+  }
+}
+
